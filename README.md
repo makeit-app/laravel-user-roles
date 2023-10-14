@@ -7,43 +7,36 @@ A package with role subsystem.
 `composer require make-it-app/laravel-user-roles:dev-main`
 
 ### Publish localization and config files
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="user-roles-install"`
+
+`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="config"` - if you plan modify config
+`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="migrations"` - if you plan to modify migrations
+`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="lang"` - if you plan modyfy localization files
 
 ### Edit Migration file first!
 
-**Migration file implies that your users table has UUID as primary key, not BigInt !**<br>
+**Migration file implies that your `users` table has UUID as primary key, not BigInt !**<br>
 
-### Check/Edit migration file !
-
-### Migrate
-
-`php artisan migrate`
+### Again. Check/Edit the migration file to match the user model
 
 ### If You are using Laravel Nova
 
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="user-roles-nova"`
+`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="nova"`
 
 Add BelongsToMany Field to `\App\Nova\User.php` file<br>
 `BelongsToMany::make( __( 'Roles' ), 'roles', NovaRoles::class ),`<br>
 <br>
 You are free to rename published `NovaRoles.php` file.
 
-### User Model Modifications
+### User Model
 
-```php
-<?php
+If You have an clean Laravel installarion - use `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="user-model" --force`<br>
+Otherwise read the `vendor/make-it-app/larale-user-roles/stubs/User.php` file and make changes manually.
 
-namespace App\Models;
+### Migrate
 
-use MakeIT\UserRoles\HasRoles;
+`php artisan migrate`
 
-class User extends Authenticatable
-{
-    use HasRoles;
-    //....
-```
-
-### Add Roles
+### Added Roles
 
 by default roles added during migration<br>
 <br>

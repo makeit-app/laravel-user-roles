@@ -42,15 +42,11 @@ class UserRolesServiceProvider extends ServiceProvider
             $this->commands([
                 AssignUserRoleCommand::class,
             ]);
-            $this->publishes([
-                __DIR__ . '/../config/config.php' => config_path('user_roles.php'),
-                __DIR__ . '/../resources/lang' => lang_path('vendor/user_roles'),
-                __DIR__ . '/../database/migrations/2022_05_02_123129_create_roles_table.php' => base_path('database/migrations/2022_05_02_123129_create_roles_table.php'),
-
-            ], 'user-roles-install');
-            $this->publishes([
-                __DIR__ . '/NovaRoles.php' => app_path('/Nova/NovaRoles.php'),
-            ], 'user-roles-nova');
+            $this->publishes([__DIR__ . '/../config/config.php'   => config_path('user_roles.php')], 'config');
+            $this->publishes([__DIR__ . '/../database/migrations' => base_path('database/migrations')], 'migrations');
+            $this->publishes([__DIR__ . '/../resources/lang'      => lang_path('vendor/user_roles')], 'lang');
+            $this->publishes([__DIR__ . '/NovaRoles.php'          => app_path('/Nova/NovaRoles.php')], 'nova');
+            $this->publishes([__DIR__ . '/../stubs/User.php'      => app_path('/Models/User.php')], 'user-model');
         }
         $this->registerPolicies();
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'user_roles');
