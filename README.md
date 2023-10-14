@@ -9,7 +9,7 @@ A package with role subsystem.
 ### Publish localization and config files
 
 `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="config"` - if you plan modify config
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="migrations"` - if you plan to modify migrations
+`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="migrations" --force` - if you plan to modify migrations
 `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="lang"` - if you plan modyfy localization files
 
 ### Edit Migration file first!
