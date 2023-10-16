@@ -2,15 +2,20 @@
 
 A package with role subsystem.
 
+## This package should be installed first from the list of third-party packages.
+
 ### Installation
 
 `composer require make-it-app/laravel-user-roles:dev-main`
 
 ### Publish localization and config files
 
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="config"` - if you plan modify config
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="migrations" --force` - if you plan to modify migrations
-`php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="lang"` - if you plan modyfy localization files
+- `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="install"` - all necessary files in one command<br>
+**OR**<br>
+- `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="config"` - if you plan modify config
+- `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="migrations" --force` - if you plan to modify migrations
+- `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="lang"` - if you plan modyfy localization files
+- `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="user-model" --force`<br>User model and observer. be careful! this command will overwrite existing files!
 
 ### Edit Migration file first!
 
@@ -26,11 +31,6 @@ Add BelongsToMany Field to `\App\Nova\User.php` file<br>
 `BelongsToMany::make( __( 'Roles' ), 'roles', NovaRoles::class ),`<br>
 <br>
 You are free to rename published `NovaRoles.php` file.
-
-### User Model
-
-If You have an clean Laravel installarion - use `php artisan vendor:publish --provider="MakeIT\\UserRoles\\UserRolesServiceProvider" --tag="user-model" --force`<br>
-Otherwise read the `vendor/make-it-app/larale-user-roles/stubs/User.php` file and make changes manually.
 
 ### Migrate
 
