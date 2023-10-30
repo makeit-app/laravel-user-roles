@@ -5,7 +5,6 @@ namespace MakeIT\UserRoles;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Gate;
 
 class UserRolesServiceProvider extends ServiceProvider
 {
