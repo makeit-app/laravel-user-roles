@@ -90,7 +90,7 @@ class RolePolicy
      */
     public function forceDelete(User $user, Role $role): bool
     {
-        return ! $role->users->count() > 0 && $user->hasRole(['super']);
+        return !$role->users->count() > 0 && $user->hasRole(['super']);
     }
 
     /**

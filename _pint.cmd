@@ -1,2 +1,4 @@
 @echo off
-powershell -c ./vendor/bin/pint -v
+cls
+echo.
+./vendor/bin/pint -v
