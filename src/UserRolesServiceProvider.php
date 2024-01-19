@@ -55,7 +55,7 @@ class UserRolesServiceProvider extends ServiceProvider
                 __DIR__ . '/../stubs/UserObserver.php' => app_path('/Observers/UserObserver.php'),
                 __DIR__ . '/../stubs/UserPolicy.php' => app_path('/Policies/UserPolicy.php'),
             ], 'install');
-            $this->publishes([__DIR__ . '/../configonfig.php' => config_path('user_roles.php')], 'config');
+            $this->publishes([__DIR__ . '/../config.php' => config_path('user_roles.php')], 'config');
             $this->publishes([__DIR__ . '/../database/migrations' => base_path('database/migrations')], 'migrations');
             $this->publishes([__DIR__ . '/../resources/lang' => lang_path('vendor/user_roles')], 'lang');
             $this->publishes([
